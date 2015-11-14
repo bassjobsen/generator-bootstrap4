@@ -1,0 +1,44 @@
+{
+  "name": "generator-bootstrap4",
+  "version": "0.0.1",
+  "description": "Scaffold out a front-end Bootstrap 4 Web app",
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bassjobsen/generator-bootstrap4.git"
+  },
+  "author": "Bass Jobsen",
+  "homepage": "https://github.com/bassjobsen/generator-bootstrap4/",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "web",
+    "app",
+    "bootstrap",
+    "bootstrap 4",
+    "front-end",
+    "jquery",
+    "grunt"
+  ],
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "generator-jasmine": "^0.2.0",
+    "generator-mocha": "^0.2.0",
+    "mkdirp": "^0.5.1",
+    "underscore.string": "^3.1.1",
+    "wiredep": "^2.2.2",
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
+  },
+  "devDependencies": {
+    "grunt-cli": "^0.1.13",
+    "mocha": "*",
+    "yeoman-assert": "^2.0.0"
+  }
+}
