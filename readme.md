@@ -2,7 +2,7 @@
 
 [Yeoman](http://yeoman.io) generator that scaffolds out a front-end Bootstrap 4 web app.
 
-![](http://i.imgur.com/uKTT2Hj.png)
+![Run the Bootstrap 4 generator](screen.png)
 
 ## Features
 
