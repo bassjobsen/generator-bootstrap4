@@ -6,6 +6,10 @@
 
 ## Features
 
+* Bootstrap 4
+* Flexbox support (Optional)
+* Font Awesome (Optional)
+* Octicons (Optional)
 * CSS Autoprefixing
 * Built-in preview server with LiveReload
 * Automagically compile ES6 (with Babel) & Sass
@@ -13,10 +17,7 @@
 * Automagically wire up your Bower components with [grunt-wiredep](#third-party-dependencies).
 * Awesome Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
 * Mocha Unit Testing with PhantomJS
-* Bootstrap 4
-* Flexbox support (Optional)
-* Font Awesome (Optional Todo)
-* Octicons (Optional Todo)
+
 
 For more information on what `generator-bootstrap4` can do for you, take a look at the [Grunt tasks](https://github.com/bassjobsen/generator-bootstrap4/blob/master/app/templates/_package.json) used in our `package.json`.
 

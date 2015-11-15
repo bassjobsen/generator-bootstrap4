@@ -2,8 +2,24 @@
 $enable-flex: true;
 <% } -%>
 
+<% if (includeFontAwesome) { -%>
+$fa-font-path: "../bower_components/components-font-awesome/fonts";
+<% } -%>
+
+<% if (includeOcticons) { -%>
+$octicons-font-path: "../bower_components/octicons/octicons";
+<% } -%>
+
 // bower:scss
-@import "bootstrap/assets/stylesheets/bootstrap.scss";
+@import "bootstrap/scss/bootstrap.scss";
+
+<% if (includeFontAwesome) { -%>
+@import "components-font-awesome/scss/font-awesome.scss";
+<% } -%>
+
+<% if (includeOcticons) { -%>
+@import "octicons/octicons/octicons.scss";
+<% } -%>
 // endbower
 
 .browsehappy {

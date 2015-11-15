@@ -36,23 +36,39 @@
       <div class="jumbotron">
         <h1>'Allo, 'Allo!</h1>
         <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
+        <p><a class="btn btn-lg btn-success" href="#">Splendid!<% if (includeFontAwesome) { %> <i class="fa fa-thumbs-o-up"></i><% } %></a></p>
       </div>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-     
-          <h4><a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a></h4>
-          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-          <h4><a href="http://libsass.org/">Sass</a></h4>
-          <p>Sass is a mature, stable, and powerful professional grade CSS extension language.</p>
-
+  <div class="card-columns">
+  
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a></h4>
+          <p class="card-text">Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
         </div>
       </div>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><a href="http://libsass.org/">Sass</a></h4>
+          <p class="card-text">Sass is a mature, stable, and powerful professional grade CSS extension language.</p>
+        </div>
+      </div>
+      <% if (includeFontAwesome) { %><div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><a href="http://fontawesome.io/">Font Awesome</a></h4>
+          <p class="card-text">Font Awesome gives you scalable vector icons that can instantly be customized — size, color, drop shadow, and anything that can be done with the power of CSS.</p>
+        </div>
+      </div><% } %>   
+      <% if (includeOcticons) { %><div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><a href="https://octicons.github.com/">Github Octicons</a></h4>
+          <p class="card-text">Way back in 2012, social coding community GitHub launched its own icon font called Octicons. GitHub hasmade them available for anyone and everyone to download and use. <span class="mega-octicon octicon-logo-github" style="min-width:110px;"></span></p>
+        </div>
+      </div><% } %>  
+  </div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from us</p>
+        <p><% if (includeFontAwesome) { %><i class="fa fa-heart"></i><% } %> from us</p>
       </div>
     </div>
 

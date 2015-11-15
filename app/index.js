@@ -66,29 +66,15 @@ module.exports = generators.Base.extend({
       name: 'features',
       message: 'What more would you like?',
       choices: [{
-        name: 'Sass',
-        value: 'includeSass',
-        checked: true
+        name: 'Font Awesome',
+        value: 'includeFontAwesome',
+        checked: false
       }, {
-        name: 'Bootstrap',
-        value: 'includeBootstrap',
-        checked: true
-      }, {
-        name: 'Modernizr',
-        value: 'includeModernizr',
-        checked: true
+        name: 'Octicons',
+        value: 'includeOcticons',
+        checked: false          
       }]
     }, {
-      type: 'confirm',
-      name: 'includeJQuery',
-      message: 'Would you like to include jQuery?',
-      default: true,
-      when: function (answers) {
-        return answers.features.indexOf('includeBootstrap') === -1;
-      }
-    }];
-    
-    prompts = [{
       type: 'confirm',
       name: 'enableFlexbox',
       message: 'Would you like to enable flexbox (reduced browser and device support)?',
@@ -105,6 +91,8 @@ module.exports = generators.Base.extend({
       this.includeSass = true; //hasFeature('includeSass');
       this.includeBootstrap = true; //hasFeature('includeBootstrap');
       this.includeModernizr = false; //hasFeature('includeModernizr');
+      this.includeFontAwesome = hasFeature('includeFontAwesome');
+      this.includeOcticons = hasFeature('includeOcticons');
       this.enableFlexbox = answers.enableFlexbox;
 
       done();
@@ -120,7 +108,6 @@ module.exports = generators.Base.extend({
           pkg: this.pkg,
           includeSass: this.includeSass,
           includeBootstrap: this.includeBootstrap,
-          enableFlexbox: this.enableFlexbox,
           testFramework: this.options['test-framework'],
           useBabel: this.options['babel']
         }
@@ -135,6 +122,8 @@ module.exports = generators.Base.extend({
           includeSass: this.includeSass,
           enableFlexbox: this.enableFlexbox,
           includeJQuery: this.includeBootstrap || this.includeJQuery,
+          includeFontAwesome: this.includeFontAwesome,
+          includeOcticons: this.includeOcticons,
           testFramework: this.options['test-framework'],
           useBabel: this.options['babel']
         }
@@ -161,21 +150,22 @@ module.exports = generators.Base.extend({
       };
 
       if (this.includeBootstrap) {
-       
-          bowerJson.dependencies['bootstrap'] = 'https://github.com/twbs/bootstrap.git#v4-dev';
-          bowerJson.overrides = {
-            'bootstrap-sass': {
-              'main': [
-                'assets/stylesheets/_bootstrap.scss',
-                'assets/javascripts/bootstrap.js'
-              ]
-            }
-          };
+        bowerJson.dependencies['bootstrap'] = 'https://github.com/twbs/bootstrap.git#v4-dev';
         bowerJson.dependencies['jquery'] = '~2.1.4';
       } 
 
-      if (this.includeModernizr) {
-        bowerJson.dependencies['modernizr'] = '~2.8.3';
+      if (this.includeFontAwesome) {
+        bowerJson.dependencies['components-font-awesome'] = '~4.4';
+      }
+      if (this.includeOcticons) {
+        bowerJson.dependencies['octicons'] = '~3.3.0';
+        bowerJson.overrides = {
+            'octicons': {
+              'main': [
+                'octicons/octicons.scss'
+              ]
+            }
+        };   
       }
 
       this.fs.writeJSON('bower.json', bowerJson);
@@ -213,6 +203,8 @@ module.exports = generators.Base.extend({
         this.destinationPath('app/styles/' + stylesheet),
         {
           includeBootstrap: this.includeBootstrap,
+          includeFontAwesome: this.includeFontAwesome,
+          includeOcticons: this.includeOcticons,
           enableFlexbox: this.enableFlexbox
         }
       )
@@ -222,7 +214,7 @@ module.exports = generators.Base.extend({
       var bsPath;
 
       // path prefix for Bootstrap JS files
-      bsPath = '/bootstrap/js/dist/';
+      bsPath = '/bower_components/bootstrap/js/dist/';
         
       this.fs.copyTpl(
         this.templatePath('index.html'),
@@ -231,6 +223,8 @@ module.exports = generators.Base.extend({
           appname: this.appname,
           includeSass: this.includeSass,
           includeBootstrap: this.includeBootstrap,
+          includeFontAwesome: this.includeFontAwesome,
+          includeOcticons: this.includeOcticons,
           enableFlexbox: this.enableFlexbox,
           bsPath: bsPath,
           bsPlugins: [
@@ -240,10 +234,10 @@ module.exports = generators.Base.extend({
             'collapse',
             'dropdown',
             'modal',
-            'popover',
             'scrollspy',
             'tab',
             'tooltip',
+            'popover',
             'util'
           ]
         }
